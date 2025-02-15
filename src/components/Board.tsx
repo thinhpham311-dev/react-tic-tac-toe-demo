@@ -6,8 +6,8 @@ import { Square } from "./Square";
 const BoardContainer = styled.div`
 	border: 4px solid darkblue;
 	border-radius: 10px;
-	min-width: 250px;
-	min-height: 250px;
+	width: 300px;
+	height: 300px;
 	margin: 0 auto;
 	display: grid;
 	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
