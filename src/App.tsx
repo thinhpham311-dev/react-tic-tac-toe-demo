@@ -27,10 +27,17 @@ function App() {
     setXisNext(!xIsNext);
   }
 
+  const jumpTo = (step: number) => {
+    setStepNumber(step);
+    setXisNext(step % 2 === 0);
+  }
+
+
   return (
     <>
       <Board squares={history[stepNumber]} onClick={handleClick} />
       <p>{winner ? `Winner: ${winner}` : `Next Player ${xIsNext ? 'X' : 'O'}`}</p>
+      <button onClick={() => jumpTo(0)}> Go to start</button>
     </>
   )
 }
