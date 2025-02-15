@@ -2,7 +2,17 @@ import { useState } from 'react'
 import { Board } from './components/Board';
 import './App.css'
 import { calculateWinner } from './helpers';
+import styled from "styled-components";
 
+const GameContainer = styled.div`
+  display: flex;
+  flex-wrap:wrap;
+`
+
+const GameState = styled.div`
+	width: 200px;
+	margin: 20px auto;
+`;
 
 function App() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -32,13 +42,25 @@ function App() {
     setXisNext(step % 2 === 0);
   }
 
+  const renderMoves = () => {
+    return history.map((_step, move) => {
+      const destination = move ? `Go to move ${move}` : 'Go to start';
+      return (
+        <li key={move}>
+          <button onClick={() => jumpTo(move)}> {destination}</button>
+        </li>
+      )
+    })
+  }
 
   return (
-    <>
+    <GameContainer>
       <Board squares={history[stepNumber]} onClick={handleClick} />
-      <p>{winner ? `Winner: ${winner}` : `Next Player ${xIsNext ? 'X' : 'O'}`}</p>
-      <button onClick={() => jumpTo(0)}> Go to start</button>
-    </>
+      <GameState>
+        <p>{winner ? `Winner: ${winner}` : `Next Player ${xIsNext ? 'X' : 'O'}`}</p>
+        {renderMoves()}
+      </GameState>
+    </GameContainer>
   )
 }
 
