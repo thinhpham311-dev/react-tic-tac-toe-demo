@@ -15,7 +15,7 @@ const BoardContainer = styled.div`
 
 
 interface BoardProps {
-    squares: Array<any>,
+    squares: Array<string | null>,
     onClick: Function;
 }
 

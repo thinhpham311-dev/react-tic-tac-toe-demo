@@ -18,7 +18,7 @@ function App() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXisNext] = useState(true);
-  const [scores, setScores] = useState({ X: 0, O: 0 });
+  const [scores, setScores] = useState<{ X: number; O: number }>({ X: 0, O: 0 });
 
   const currentSquares = history[stepNumber];
   const winner = calculateWinner(currentSquares);
@@ -39,11 +39,10 @@ function App() {
   }
 
   const jumpTo = (step: number) => {
-    // Update scores when resetting the game if there's a winner
     if (step === 0 && stepNumber !== 0 && winner) {
-      setScores((prevScores: any) => ({
+      setScores((prevScores) => ({
         ...prevScores,
-        [winner]: prevScores[winner] + 1
+        [winner]: (prevScores[winner as "X" | "O"] || 0) + 1,
       }));
     }
 

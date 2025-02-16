@@ -12,10 +12,10 @@ const SquareButton = styled.button`
 
 
 interface SquareProps {
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    value: string;
+	onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+	value: string | null;
 }
 
 export const Square: React.FC<SquareProps> = ({ onClick, value }) => {
-    return <SquareButton onClick={onClick}>{value}</SquareButton>;
+	return <SquareButton onClick={onClick}>{value}</SquareButton>;
 };
