@@ -1,4 +1,4 @@
-Project Name
+Tic Tac Toe Game - React
 
 Getting Started
 
